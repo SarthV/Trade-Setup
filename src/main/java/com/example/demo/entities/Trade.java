@@ -1,6 +1,12 @@
 package com.example.demo.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Trade {
+
+	@Id
 	private int id;
 	private String stockTicker;
 	private double price;

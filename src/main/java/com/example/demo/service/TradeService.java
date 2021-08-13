@@ -2,12 +2,15 @@ package com.example.demo.service;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entities.Trade;
 import com.example.demo.repository.TradeRepository;
 
+@Transactional
 @Service
 public class TradeService {
 
@@ -28,7 +31,6 @@ public class TradeService {
 
 	public void deleteTrade(int id) {
 		repository.deleteById(id);
-		;
 	}
 
 }
