@@ -99,7 +99,13 @@ public class TradeController {
 
 	@PutMapping(value = "/{id}")
 	public void editTrade(@PathVariable("id") int id, @RequestBody Trade trade) {
-		service.editFullTrade(id, trade);
+		if (trade.getStatusCode() == 0) {
+			service.editFullTrade(id, trade);
+		} else {
+			System.out.println("Edit not allowed");
+			return;
+		}
+
 	}
 
 }
