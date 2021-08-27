@@ -19,16 +19,15 @@ public class Trade {
 	private double price;
 	private int volume;
 	private String buyOrSell;
-	private LocalDateTime orderTime; 
+	private LocalDateTime orderTime;
 	private int statusCode;
 
 	public Trade() {
 		super();
 	}
-	
 
-	public Trade(int id, String stockTicker, double price, int volume, 
-			String buyOrSell, LocalDateTime orderTime, int statusCode) {
+	public Trade(int id, String stockTicker, double price, int volume, String buyOrSell, LocalDateTime orderTime,
+			int statusCode) {
 		super();
 		this.id = id;
 		this.stockTicker = stockTicker;
@@ -38,7 +37,6 @@ public class Trade {
 		this.orderTime = orderTime;
 		this.statusCode = statusCode;
 	}
-
 
 	public int getId() {
 		return id;
@@ -80,7 +78,6 @@ public class Trade {
 		this.buyOrSell = buyOrSell;
 	}
 
-
 	public int getStatusCode() {
 		return statusCode;
 	}
@@ -89,11 +86,9 @@ public class Trade {
 		this.statusCode = statusCode;
 	}
 
-
 	public LocalDateTime getOrderTime() {
 		return orderTime;
 	}
-
 
 	public void setOrderTime(LocalDateTime orderTime) {
 		this.orderTime = orderTime;
