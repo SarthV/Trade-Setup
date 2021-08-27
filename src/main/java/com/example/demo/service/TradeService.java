@@ -27,10 +27,33 @@ public class TradeService {
 
 	public void newTrade(Trade trade) {
 		repository.save(trade);
+
 	}
 
 	public void deleteTrade(int id) {
-		repository.deleteById(id);
+		try {
+			Trade trade = getTrade(id);
+			if (trade != null) {
+				repository.deleteById(id);
+			} else {
+				System.out.println("No trade in here");
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	}
+
+	public void editFullTrade(int id, Trade trade) {
+		Trade existingTrade = getTrade(id);
+		existingTrade.setBuyOrSell(trade.getBuyOrSell());
+		existingTrade.setVolume(trade.getVolume());
+		existingTrade.setPrice(trade.getPrice());
+		existingTrade.setStatusCode(trade.getStatusCode());
+	}
+
+	public void editVolume(int newVol, int id) {
+		Trade existingTrade = getTrade(id);
+		existingTrade.setVolume(newVol);
 	}
 
 }
