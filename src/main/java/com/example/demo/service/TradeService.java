@@ -22,7 +22,7 @@ public class TradeService {
 	}
 
 	public Trade getTrade(int id) {
-		return repository.getById(id);
+		return repository.findById(id).get();
 	}
 
 	public void newTrade(Trade trade) {
