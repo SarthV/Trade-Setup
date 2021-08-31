@@ -8,6 +8,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 @Table(name = "stocks")
 public class Trade {
@@ -19,6 +21,7 @@ public class Trade {
 	private double price;
 	private int volume;
 	private String buyOrSell;
+	@JsonFormat(shape = JsonFormat.Shape.STRING)
 	private LocalDateTime orderTime;
 	private int statusCode;
 

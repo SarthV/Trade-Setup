@@ -27,35 +27,27 @@ public class TradeControllerTest {
 	private MockMvc mockMvc;
 
 	@Test
-	public void testShouldReturnListSize3() throws Exception {
-		// 1. setup stuff
+	public void testGetAllTrade() throws Exception {
 
-		// 2. call method under test
-		MvcResult mvcResult = this.mockMvc.perform(get("/api/trades")).andDo(print()).andExpect(status().isOk())
+		MvcResult mvcResult = this.mockMvc.perform(get("/api/trades/")).andDo(print()).andExpect(status().isOk())
 				.andReturn();
 
-		// 3. verify the results
-		List<Trade> trades = new ObjectMapper().readValue(mvcResult.getResponse().getContentAsString(),
+		List<Trade> trade = new ObjectMapper().readValue(mvcResult.getResponse().getContentAsString(),
 				new TypeReference<List<Trade>>() {
 				});
 
-		assertThat(trades.size()).isGreaterThan(0);
+		assertThat(trade.size()).isGreaterThan(0);
 	}
 
 	@Test
-	public void testFindByIdSuccess() throws Exception {
-		// 1. setup stuff
+	public void testFindByIDSuccess() throws Exception {
 
-		// 2. call method under test
-		MvcResult mvcResult = this.mockMvc.perform(get("/api/shippers/1")).andDo(print()).andExpect(status().isOk())
+		MvcResult result = this.mockMvc.perform(get("/api/trades/1")).andDo(print()).andExpect(status().isOk())
 				.andReturn();
-
-		// 3. verify the results
-		Trade trades = new ObjectMapper().readValue(mvcResult.getResponse().getContentAsString(),
+		Trade trade = new ObjectMapper().readValue(result.getResponse().getContentAsString(),
 				new TypeReference<Trade>() {
 				});
-
-		assertThat(trades.getId()).isEqualTo(1);
+		assertThat(trade.getId()).isEqualTo(1);
 	}
 
 	@Test
@@ -63,6 +55,7 @@ public class TradeControllerTest {
 		// 1. setup stuff
 
 		// 2. call method under test
-		this.mockMvc.perform(get("/api/trades/9999")).andDo(print()).andExpect(status().isNotFound()).andReturn();
+		this.mockMvc.perform(get("/api/shippers/9999")).andDo(print()).andExpect(status().isNotFound());
 	}
+
 }
